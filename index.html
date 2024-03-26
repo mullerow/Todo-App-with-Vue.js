@@ -5,34 +5,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task - From static HTML to a Vue Instance</title>
+    <title>Todo-App-Vue</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
         <header class="header">
-            <section class="header__section">
-                <p class="header__task-name">💻 Coding Task</p>
-                <p class="header__bootcamp-info-wrapper">
-                    <span class="header__bootcamp-modul"><strong>Modul:</strong> Web Apps with Vue.js - Part 1</span>
-                    <a href="https://www.coding-bootcamps.eu/" class="header__bootcamp-link">coding-bootcamps.eu</a>
-                </p>
-            </section>
         </header>
         <main>
-            <div class="inside">
-                <div class="card">
-                    <h2>Welcome back <strong>{{ person }}</strong>!</h2>
-                    <p>
-                        You logged in on {{ new Date() }}, 12:34:25 PM<br />
-                        We wish you a pleasant day.
-                    </p>
-                </div>
+            <h2>Todo-App-Vue</h2>
+            <div class="filter-radios" @change="changeFilterMode($event)">
+                <input type="radio" name="filter" id="allTodos" checked>
+                <label for="allTodos" :class="{'checked-radio': filterModus === 'allTodos'}">All</label>
+                <input type="radio" name="filter" id="openTodos">
+                <label for="openTodos" :class="{'checked-radio': filterModus === 'openTodos'}">OPEN</label>
+                <input type="radio" name="filter" id="doneTodos">
+                <label for="doneTodos" :class="{'checked-radio': filterModus === 'doneTodos'}">DONE</label>
             </div>
+            <form @submit.prevent="">
+                <input type="text" v-model.lazy.trim="newTodo">
+                <!-- :value="newTodo" @input="newTodo = $event.target.value"> -->
+                <button @click="addTodo">ADD TODO</button>
+            </form>
+
+            <button class="delete-button" @click="deleteDoneTodos">DELETE DONE TODOs</button>
+            <ul>
+                <li v-for=" todo in filteredTodos" :key="'todo-' + todo.id"
+                    :class="{'is-done': todo.done,'is-not-done': !todo.done}">
+                    <input type="checkbox" :checked="todo.done" @click="todo.done =!todo.done">
+                    <label :for="'todo-' + todo.id">{{ todo.description }}</label>
+                </li>
+            </ul>
         </main>
     </div>
-    <script src="https://www.unpkg.com/vue@latest"></script>
+    <script src=" https://unpkg.com/vue@latest">
+    </script>
     <script src="script.js"></script>
 </body>
 
