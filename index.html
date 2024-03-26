@@ -17,17 +17,19 @@
         <header class="header">
         </header>
         <main>
+
             <h2>Todo-App-Vue</h2>
-            <div class="filter-radios" @change="changeFilterMode($event)">
+
+            <form class="filter-radios" @change.prevent="changeFilterMode($event)">
                 <input type="radio" name="filter" id="allTodos" checked>
                 <label for="allTodos" :class="{'checked-radio': filterModus === 'allTodos'}">All</label>
                 <input type="radio" name="filter" id="openTodos">
                 <label for="openTodos" :class="{'checked-radio': filterModus === 'openTodos'}">OPEN</label>
                 <input type="radio" name="filter" id="doneTodos">
                 <label for="doneTodos" :class="{'checked-radio': filterModus === 'doneTodos'}">DONE</label>
-            </div>
+            </form>
             <form @submit.prevent="">
-                <input type="text" v-model.lazy.trim="newTodo">
+                <input type="text" v-model.trim="newTodo">
                 <!-- :value="newTodo" @input="newTodo = $event.target.value"> -->
                 <button @click="addTodo">ADD TODO</button>
             </form>
@@ -36,10 +38,11 @@
             <ul>
                 <li v-for=" todo in filteredTodos" :key="'todo-' + todo.id"
                     :class="{'is-done': todo.done,'is-not-done': !todo.done}">
-                    <input type="checkbox" :checked="todo.done" @click="todo.done =!todo.done">
+                    <input type="checkbox" :checked="todo.done" @click="updateTodo(todo)">
                     <label :for="'todo-' + todo.id">{{ todo.description }}</label>
                 </li>
             </ul>
+            <h3>{{ newTodo }}</h3>
         </main>
     </div>
     <script src=" https://unpkg.com/vue@latest">

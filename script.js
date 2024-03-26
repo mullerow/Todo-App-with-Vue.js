@@ -69,6 +69,9 @@ Vue.createApp({
         }
       }
     },
+    updateTodo(todo) {
+      todo.done = !todo.done;
+    },
   },
   created() {
     this.filteredTodos = this.todos;
