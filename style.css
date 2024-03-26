@@ -18,10 +18,9 @@ html {
 }
 
 main {
-  background-image: radial-gradient(circle at top, #1290ba 10%, #0b5972 50%);
-  _background-color: #0b5972;
+  background-image: radial-gradient(circle at top, #1290ba 30%, #0b5972 90%);
   width: 800px;
-  min-height: 400px;
+  min-height: 430px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -36,7 +35,7 @@ h2 {
 }
 
 h3 {
-  margin-left: 125px;
+  margin-left: 130px;
   color: goldenrod;
 }
 
@@ -54,7 +53,7 @@ button {
   margin-left: 30px;
   background-color: rgb(255, 140, 0);
   border-radius: 8px;
-  box-shadow: 1px 1px 10px yellow;
+  box-shadow: 1px 1px 8px yellow;
 }
 
 button:hover {
@@ -73,29 +72,50 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="checkbox"] {
-  margin-top: 30px;
+form > label {
+  text-align: center;
+  margin-left: 50px;
+  width: 100px;
+  display: inline-block;
+  border: 1px solid transparent;
 }
 
-form > label {
-  margin-left: 50px;
+form > label:hover {
+  border: 1px solid rgb(221, 221, 208);
+  border-radius: 20px;
 }
 
 .delete-button {
   width: 200px;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .is-done {
   color: rgb(4, 167, 4);
+  box-shadow: 1px 1px 2px rgb(221, 221, 208);
+  width: 650px;
+  height: 34px;
+  margin-bottom: 30px;
+}
+
+.is-done:hover,
+.is-not-done:hover {
+  background-color: rgb(219, 217, 217);
+  transition: background-color 0.3s;
 }
 
 .is-not-done {
   color: rgb(255, 140, 0);
+  box-shadow: 1px 1px 2px rgb(221, 221, 208);
+  width: 650px;
+  height: 34px;
+  margin-bottom: 30px;
 }
 
 .checked-radio {
   background-color: rgb(255, 140, 0);
   border-radius: 10px;
   box-shadow: 1px 1px 10px yellow;
+  transition: background-color 0.3s;
 }
