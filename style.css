@@ -97,6 +97,7 @@ form > label:hover {
   width: 650px;
   height: 34px;
   margin-bottom: 30px;
+  border-radius: 5px;
 }
 
 .is-done:hover,
@@ -111,6 +112,7 @@ form > label:hover {
   width: 650px;
   height: 34px;
   margin-bottom: 30px;
+  border-radius: 5px;
 }
 
 .checked-radio {

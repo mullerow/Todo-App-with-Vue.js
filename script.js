@@ -43,6 +43,7 @@ Vue.createApp({
           done: false,
         });
       }
+      this.newTodo = "";
     },
     changeFilterMode(event) {
       this.filterModus = event.target.id;
