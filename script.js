@@ -81,6 +81,30 @@ Vue.createApp({
       });
       await this.getTodosFromAPI();
     },
+    async risePriority(todo) {
+      if (todo.priority < 5) {
+        todo.priority++;
+        await fetch(this.apiUrl + todo.id, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(todo),
+        });
+      } else {
+        return;
+      }
+    },
+    async sinkPriority(todo) {
+      if (todo.priority > 1) {
+        todo.priority--;
+        await fetch(this.apiUrl + todo.id, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(todo),
+        });
+      } else {
+        return;
+      }
+    },
   },
   async created() {
     await this.getTodosFromAPI();

@@ -4,6 +4,12 @@
   font-style: normal;
 }
 
+.days-one-regular {
+  font-family: "Days One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 *,
 ::after,
 ::before {
@@ -44,14 +50,42 @@ input[type="text"] {
   width: 310px;
 }
 
-label > button {
+.up-button,
+.down-button {
+  width: 30px;
+  height: 25px;
+  margin-right: 5px;
+  margin-top: 5px;
+  background-color: rgb(208, 208, 218);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px yellow;
+  float: right;
+  color: white;
+}
+
+.priority-label {
+  width: 30px;
+  height: 25px;
+  margin-top: 5px;
+  margin-right: 4px;
+  padding-left: 10px;
+  padding-top: 1px;
+  background-color: rgb(208, 208, 218);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px yellow;
+  float: right;
+  color: rgb(255, 140, 0);
+  font-family: "Days One";
+}
+
+.delete-button {
   width: 60px;
   height: 25px;
   margin-right: 5px;
   margin-top: 5px;
   background-color: rgb(255, 140, 0);
   border-radius: 8px;
-  box-shadow: 0px 0px 8px yellow;
+  box-shadow: 0px 0px 5px yellow;
   float: right;
   color: white;
 }
@@ -68,7 +102,7 @@ ul {
 }
 
 li {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 input[type="radio"] {

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -39,9 +40,11 @@
                 <li v-for=" todo in filteredTodos" :key="'todo-' + todo.id"
                     :class="{'is-done': todo.done,'is-not-done': !todo.done}">
                     <input type="checkbox" :checked="todo.done" @click="updateTodo(todo)">
-                    <label :for="'todo-' + todo.id">{{ todo.description }}
-                        <button class="delete-button" @click="deleteDoneTodo(todo)">DELETE</button>
-                    </label>
+                    <label :for="'todo-' + todo.id">{{ todo.description }}</label>
+                    <button class="delete-button" @click="deleteDoneTodo(todo)">DELETE</button>
+                    <label class="priority-label"> {{ todo.priority }}</label>
+                    <button class="up-button" @click="risePriority(todo)">🔼</button>
+                    <button class="down-button" @click="sinkPriority(todo)">🔽</button>
                 </li>
             </ul>
             <p>{{ newTodo }}</p>
