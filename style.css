@@ -11,7 +11,7 @@
 }
 
 html {
-  font-size: 20px;
+  font-size: 18px;
   font-family: Permanent Marker;
   color: white;
   letter-spacing: 2px;
@@ -26,16 +26,13 @@ main {
   border-radius: 5px;
 }
 
-label {
-  margin-left: 20px;
-}
-
 h2 {
   margin: 30px;
 }
 
-h3 {
-  margin-left: 130px;
+p {
+  margin-left: 90px;
+  font-size: 25px;
   color: goldenrod;
 }
 
@@ -47,13 +44,16 @@ input[type="text"] {
   width: 310px;
 }
 
-button {
-  width: 100px;
+label > button {
+  width: 60px;
   height: 25px;
-  margin-left: 30px;
+  margin-right: 5px;
+  margin-top: 5px;
   background-color: rgb(255, 140, 0);
   border-radius: 8px;
-  box-shadow: 1px 1px 8px yellow;
+  box-shadow: 0px 0px 8px yellow;
+  float: right;
+  color: white;
 }
 
 button:hover {
@@ -64,7 +64,11 @@ button:hover {
 
 ul {
   list-style-type: none;
-  margin-left: 50px;
+  margin-left: 30px;
+}
+
+li {
+  margin-top: 30px;
 }
 
 input[type="radio"] {
@@ -85,18 +89,21 @@ form > label:hover {
   border-radius: 20px;
 }
 
-.delete-button {
-  width: 200px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+#add-button {
+  width: 100px;
+  height: 25px;
+  margin-left: 30px;
+  background-color: rgb(255, 140, 0);
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px yellow;
+  color: white;
 }
 
 .is-done {
   color: rgb(4, 167, 4);
-  box-shadow: 1px 1px 2px rgb(221, 221, 208);
+  box-shadow: 0px 0px 2px rgb(221, 221, 208);
   width: 650px;
   height: 34px;
-  margin-bottom: 30px;
   border-radius: 5px;
 }
 
@@ -108,16 +115,15 @@ form > label:hover {
 
 .is-not-done {
   color: rgb(255, 140, 0);
-  box-shadow: 1px 1px 2px rgb(221, 221, 208);
+  box-shadow: 0px 0px 2px rgb(221, 221, 208);
   width: 650px;
   height: 34px;
-  margin-bottom: 30px;
   border-radius: 5px;
 }
 
 .checked-radio {
   background-color: rgb(255, 140, 0);
   border-radius: 10px;
-  box-shadow: 1px 1px 10px yellow;
+  box-shadow: 0px 0px 10px yellow;
   transition: background-color 0.3s;
 }

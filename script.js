@@ -49,21 +49,16 @@ Vue.createApp({
       this.todos = todoData;
       this.filteredTodos = this.todos;
     },
-    async deleteAPITodos(doneTodoId) {
-      await fetch(this.apiUrl + doneTodoId, {
+    async deleteAPITodo(todoId) {
+      await fetch(this.apiUrl + todoId, {
         method: "DELETE",
       });
     },
-    async deleteDoneTodos() {
-      for (i = this.todos.length - 1; i >= 0; i--) {
-        if (this.todos[i].done === true) {
-          console.log("id", this.todos[i].id);
-          const doneTodoId = this.todos[i].id;
-          await this.deleteAPITodos(doneTodoId);
-        }
-      }
+    async deleteDoneTodo(todo) {
+      await this.deleteAPITodo(todo.id);
       await this.getTodosFromAPI();
     },
+
     async updateTodo(todo) {
       todo.done = !todo.done;
       await fetch(this.apiUrl + todo.id, {
@@ -77,6 +72,7 @@ Vue.createApp({
       const newTodoObject = {
         done: false,
         description: this.newTodo,
+        priority: 1,
       };
       await fetch(this.apiUrl, {
         method: "POST",
@@ -86,7 +82,6 @@ Vue.createApp({
       await this.getTodosFromAPI();
     },
   },
-
   async created() {
     await this.getTodosFromAPI();
   },

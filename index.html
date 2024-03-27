@@ -31,18 +31,20 @@
             <form @submit.prevent="">
                 <input type="text" v-model.trim="newTodo">
                 <!-- :value="newTodo" @input="newTodo = $event.target.value"> -->
-                <button @click="addTodo">ADD TODO</button>
+                <button id="add-button" @click="addTodo">ADD TODO</button>
             </form>
 
-            <button class="delete-button" @click="deleteDoneTodos">DELETE DONE TODOs</button>
+
             <ul>
                 <li v-for=" todo in filteredTodos" :key="'todo-' + todo.id"
                     :class="{'is-done': todo.done,'is-not-done': !todo.done}">
                     <input type="checkbox" :checked="todo.done" @click="updateTodo(todo)">
-                    <label :for="'todo-' + todo.id">{{ todo.description }}</label>
+                    <label :for="'todo-' + todo.id">{{ todo.description }}
+                        <button class="delete-button" @click="deleteDoneTodo(todo)">DELETE</button>
+                    </label>
                 </li>
             </ul>
-            <h3>{{ newTodo }}</h3>
+            <p>{{ newTodo }}</p>
         </main>
     </div>
     <script src=" https://unpkg.com/vue@latest">
