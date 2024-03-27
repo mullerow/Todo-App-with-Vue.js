@@ -1,29 +1,14 @@
 Vue.createApp({
   data() {
     return {
-      todos: [
-        {
-          id: 1,
-          description: "erstmal Hallo",
-          done: false,
-        },
-
-        {
-          id: 2,
-          description: "Wünsch einen guten Morgen!🌤️",
-          done: true,
-        },
-        {
-          id: 3,
-          description: "dann Tschüss!!!",
-          done: true,
-        },
-      ],
+      todos: [],
       newTodo: "",
       filterModus: "allTodos",
       filteredTodos: [],
+      apiUrl: "http://localhost:4730/todos/",
     };
   },
+
   methods: {
     addTodo() {
       const duplicate = this.todos.some(
@@ -37,13 +22,8 @@ Vue.createApp({
       } else if (duplicate) {
         return;
       } else {
-        this.todos.push({
-          id: Math.random().toString().substr(2),
-          description: this.newTodo,
-          done: false,
-        });
+        this.saveTodoAPI();
       }
-      this.newTodo = "";
     },
     changeFilterMode(event) {
       this.filterModus = event.target.id;
@@ -63,18 +43,51 @@ Vue.createApp({
         return this.filteredTodos;
       }
     },
-    deleteDoneTodos() {
+    async getTodosFromAPI() {
+      const response = await fetch(this.apiUrl);
+      const todoData = await response.json();
+      this.todos = todoData;
+      this.filteredTodos = this.todos;
+    },
+    async deleteAPITodos(doneTodoId) {
+      await fetch(this.apiUrl + doneTodoId, {
+        method: "DELETE",
+      });
+    },
+    async deleteDoneTodos() {
       for (i = this.todos.length - 1; i >= 0; i--) {
         if (this.todos[i].done === true) {
-          this.todos.splice(i, 1);
+          console.log("id", this.todos[i].id);
+          const doneTodoId = this.todos[i].id;
+          await this.deleteAPITodos(doneTodoId);
         }
       }
+      await this.getTodosFromAPI();
     },
-    updateTodo(todo) {
+    async updateTodo(todo) {
       todo.done = !todo.done;
+      await fetch(this.apiUrl + todo.id, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(todo),
+      });
+    },
+
+    async saveTodoAPI() {
+      const newTodoObject = {
+        done: false,
+        description: this.newTodo,
+      };
+      await fetch(this.apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newTodoObject),
+      });
+      await this.getTodosFromAPI();
     },
   },
-  created() {
-    this.filteredTodos = this.todos;
+
+  async created() {
+    await this.getTodosFromAPI();
   },
 }).mount("#app");
