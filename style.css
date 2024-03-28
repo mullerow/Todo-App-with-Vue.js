@@ -1,3 +1,12 @@
+:root {
+  --theme-color: rgb(255, 140, 0);
+  --box-shadow: 0px 0px 3px rgb(217, 218, 207);
+  --font-color-buttons: white;
+}
+
+/* rgb(255, 140, 0); 
+box-shadow: 0px 0px 5px yellow;*/
+
 .permanent-marker-regular {
   font-family: "Permanent Marker", cursive;
   font-weight: 400;
@@ -58,9 +67,9 @@ input[type="text"] {
   margin-top: 5px;
   background-color: rgb(208, 208, 218);
   border-radius: 8px;
-  box-shadow: 0px 0px 5px yellow;
+  box-shadow: var(--box-shadow);
   float: right;
-  color: white;
+  color: var(--font-color-buttons);
 }
 
 .priority-label {
@@ -72,9 +81,9 @@ input[type="text"] {
   padding-top: 1px;
   background-color: rgb(208, 208, 218);
   border-radius: 8px;
-  box-shadow: 0px 0px 5px yellow;
+  box-shadow: var(--box-shadow);
   float: right;
-  color: rgb(255, 140, 0);
+  color: var(--theme-color);
   font-family: "Days One";
 }
 
@@ -83,11 +92,11 @@ input[type="text"] {
   height: 25px;
   margin-right: 5px;
   margin-top: 5px;
-  background-color: rgb(255, 140, 0);
+  background-color: var(--theme-color);
   border-radius: 8px;
-  box-shadow: 0px 0px 5px yellow;
+  box-shadow: var(--box-shadow);
   float: right;
-  color: white;
+  color: var(--font-color-buttons);
 }
 
 button:hover {
@@ -138,7 +147,7 @@ form > label:hover {
 }
 
 .is-not-done {
-  color: rgb(255, 140, 0);
+  color: var(--theme-color);
   box-shadow: 0px 0px 2px rgb(221, 221, 208);
   width: 650px;
   height: 34px;
@@ -146,9 +155,9 @@ form > label:hover {
 }
 
 .checked-radio {
-  background-color: rgb(255, 140, 0);
+  background-color: var(--theme-color);
   border-radius: 10px;
-  box-shadow: 0px 0px 10px yellow;
+  box-shadow: var(--box-shadow);
   transition: background-color 0.3s;
 }
 
@@ -156,18 +165,19 @@ form > label:hover {
   width: 100px;
   height: 25px;
   margin-left: 30px;
-  background-color: rgb(255, 140, 0);
+  background-color: var(--theme-color);
   border-radius: 8px;
-  box-shadow: 0px 0px 8px yellow;
-  color: white;
+  box-shadow: var(--box-shadow);
+  color: var(--font-color-buttons);
 }
 
 #sort-button {
   width: 100px;
   height: 25px;
   margin-left: 30px;
-  background-color: rgb(255, 140, 0);
+  margin-top: 20px;
+  background-color: var(--theme-color);
   border-radius: 8px;
-  box-shadow: 0px 0px 8px yellow;
-  color: white;
+  box-shadow: var(--box-shadow);
+  color: var(--font-color-buttons);
 }
