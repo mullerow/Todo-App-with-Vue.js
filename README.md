@@ -6,4 +6,4 @@ the focus is on the application of the vue directives.
 
 ### development status of the app (28.03.24)
 
-<img src="./todo-app-28.03.24.png"
+<img src="./todo-app-28.03.24.png">
