@@ -34,12 +34,12 @@
                 <!-- :value="newTodo" @input="newTodo = $event.target.value"> -->
                 <button id="add-button" @click="addTodo">ADD TODO</button>
             </form>
-
+            <button id="sort-button" @click="sortTodos">Sort by Priority</button>
 
             <ul>
                 <li v-for=" todo in filteredTodos" :key="'todo-' + todo.id"
                     :class="{'is-done': todo.done,'is-not-done': !todo.done}">
-                    <input type="checkbox" :checked="todo.done" @click="updateTodo(todo)">
+                    <input type="checkbox" :checked="todo.done" @click="updateDoneState(todo)">
                     <label :for="'todo-' + todo.id">{{ todo.description }}</label>
                     <button class="delete-button" @click="deleteDoneTodo(todo)">DELETE</button>
                     <label class="priority-label"> {{ todo.priority }}</label>

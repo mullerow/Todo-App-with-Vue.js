@@ -59,13 +59,24 @@ Vue.createApp({
       await this.getTodosFromAPI();
     },
 
-    async updateTodo(todo) {
+    async updateDoneState(todo) {
       todo.done = !todo.done;
       await fetch(this.apiUrl + todo.id, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(todo),
       });
+    },
+
+    async updateAPITodos() {
+      // BAUSTELLLEEEEE
+      for (const todo of this.todos) {
+        await fetch(this.apiUrl + el.id, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(todo),
+        });
+      }
     },
 
     async saveTodoAPI() {
@@ -81,6 +92,7 @@ Vue.createApp({
       });
       await this.getTodosFromAPI();
     },
+
     async risePriority(todo) {
       if (todo.priority < 5) {
         todo.priority++;
@@ -93,6 +105,7 @@ Vue.createApp({
         return;
       }
     },
+
     async sinkPriority(todo) {
       if (todo.priority > 1) {
         todo.priority--;
@@ -104,6 +117,13 @@ Vue.createApp({
       } else {
         return;
       }
+    },
+
+    sortTodos() {
+      let sortedTodos = this.todos.sort(function (a, b) {
+        return b.priority - a.priority;
+      });
+      this.todos = sortedTodos;
     },
   },
   async created() {
